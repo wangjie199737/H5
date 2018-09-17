@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		 <style type="text/css">
+        	legend{
+        		font-size: 16px;
+        		color: red;
+        	}
+        	.xing{
+        		color: red;
+        	}
+        	fieldset{
+        		width: 360px;
+        	}
+    	</style>
+	</head>
+	<body>
+		<h1>请填写个人信息</h1>
+		<fieldset>
+			<legend>基本信息</legend>
+			姓名&nbsp;<input type="text" name="name" placeholder="请输入姓名"/>&nbsp;<span class="xing">*</span></br>
+			年龄&nbsp;<input type="number" name="age" min="1" max="150" step="1"/>
+		</fieldset>
+		<fieldset>
+			<legend>你想在哪里收到文件？</legend>
+			邮箱&nbsp;<input type="email" name="email" list="wowo" placeholder="情输入邮箱"/>&nbsp;<span class="xing">*</span></br>
+			<datalist id="wowo">
+							<option>123@qq.com</option>
+							<option>123@163.com</option>
+							<option>123@gmail.com</option>
+							<option>123@yahoo.com</option>
+							<option>123@126.com</option>
+							<option>456@qq.com</option>
+							<option>456@163.com</option>
+							<option>456@gmail.com</option>
+							<option>456@yahoo.com</option>
+							<option>456@126.com</option>
+							
+			</datalist>
+		</fieldset>
+		<fieldset>
+			<legend>收入情况</legend>
+			月收入&nbsp;
+			<select>
+							<option>20K+</option>
+							<option>40K+</option>
+							<option>60K+</option>
+							<option>60K+</option>
+							<option>100K+</option>
+							<option>200K+</option>
+			</select></br>
+			银行卡&nbsp;<input type="number" name="id" min="1" max="1000000000000000000"/>&nbsp;有效期&nbsp;<input type="date" name="lasttime" />
+		</fieldset>
+		<fieldset>
+			<legend>选取提取文件</legend>
+			<span>文件</span>&nbsp;<input type="submit" value="提取文件"  name="submit" />&nbsp;<span>未选择任何文件</span>
+		</fieldset></br></br>
+		<input type="submit" name="提交" value="提交"/>
+	</body>
+</html>
