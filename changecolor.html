@@ -1,0 +1,92 @@
+<html>
+	<head>
+		<title>页面换肤</title>
+		<style type="text/css">
+			#title{
+				color: red;
+			}
+			fieldset{
+				width: 700px;
+				height: 300px;
+			}
+			#kuang{
+				border: 2px solid gainsboro;
+				width: 698px;
+				height: 50px;
+			}
+			#text{
+				width: 600px;
+				height: 100px;
+				font-size: 18px;
+				margin-top: 20px;
+				margin-left: 46px;
+				border: 2px solid gainsboro;
+				line-height: 24px;
+				text-align: center;			
+			}
+			#skin{
+				list-style: none;
+				border: 1px solid #A9A9A9;
+				padding: 0px;
+				width: 700px;
+				height: 60px;
+			}
+			li{
+				position: relative;
+				display: inline-block;
+				border: 1px solid;
+				width: 25px;
+				height: 25px;
+				margin: 5px 3px;
+				margin-top: 15px;
+			}
+			
+		</style>
+		<script>
+			window.onload=function(){
+				var li=document.getElementsByTagName("li");
+				var text1=document.getElementById("text");
+				if(localStorage.getItem("bgcolor")){
+					text1.style.backgroundColor=localStorage.getItem("bgcolor");
+					let color=localStorage.getItem("bgcolor");
+					for(let i=0;i<li.length;i++){
+						if(li[i].style.backgroundColor===color)
+						li[i].style.marginTop="15px";
+					}
+				}			
+				for(let i=0;i<li.length;i++){
+					li[i].onclick=function(){
+						for(let j=0;j<li.length;j++){
+							li[j].style.marginTop="15px";
+						}
+						li[i].style.marginTop='15px';
+						localStorage.setItem("bgcolor",li[i].style.backgroundColor);
+						text.style.backgroundColor=localStorage.getItem("bgcolor");
+					}
+				
+				}
+				
+			}
+		</script>
+	</head>
+	<body>
+		<fieldset>
+			<legend><h1 id="title">页面换肤</h1></legend>
+				<ul id="skin">
+					<li id="skin_0" title="灰色" style="background-color: darkgrey;"></li>
+					<li id="skin_1" title="紫色" style="background-color: mediumpurple;"></li>
+					<li id="skin_2" title="红色" style="background-color: red;"></li>
+					<li id="skin_3" title="天蓝色" style="background-color: skyblue;"></li>
+					<li id="skin_4" title="橙色" style="background-color: darkorange;"></li>
+					<li id="skin_5" title="淡绿色" style="background-color: lawngreen;"></li>
+				</ul> 
+			<div id="text">
+					LocalStorage将数据保存在客户端本地的硬件设备中，即使浏览器被关闭了，该数据仍然存在，
+				下次打开浏览器访问网站时仍然可以继续使用。
+			</div>
+		</fieldset>
+	</body>
+</html>
+
+
+
