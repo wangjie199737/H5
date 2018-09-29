@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>drag</title>
+		<style>
+			div{
+				height: 180px;
+				width: 180px;
+				border: 9px solid cadetblue;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<h1>上传头像</h1>
+		<div draggable="true" id="img"></div>
+	</body>
+	<script>
+			var img1 = document.getElementById('img');
+			img1.ondragover = function(e){
+				e.preventDefault();
+			};
+			img1.ondrop = function(e){
+				e.preventDefault();
+				var file1 = e.dataTransfer.files[0];
+				var file2 = new FileReader();
+				file2.onload = function(){
+					img.innerHTML = "<img src=\""+file2.result+"\"/>";
+				}
+				file2.readAsDataURL(file1);
+			}
+		</script>
+</html>
