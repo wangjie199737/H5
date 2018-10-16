@@ -1,0 +1,113 @@
+
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+		<style>
+			#canvas{
+				border: 1px solid #eee;
+				margin-left: 340px;
+			}
+		</style>
+	</head>
+	<body>
+		<canvas id="canvas" width="800" height="800"></canvas>
+		<script>
+			var canvas1 = document.getElementById("canvas");
+			var context = canvas1.getContext("2d");			
+            //钟表
+            setInterval(zou,1000);
+			function zou(){
+				context.clearRect(0,0,800,800); 
+				
+				
+				context.beginPath();
+				context.arc(400,400,300,0,2*Math.PI);
+				context.strokeStyle = "darkcyan";
+				context.lineWidth = 5;
+				context.stroke();
+				context.closePath();
+				context.save();
+				context.translate(400,400);
+				
+				for(var i=1;i<=60;i++){
+					context.beginPath();
+					context.lineTo(0,-300);
+					context.lineTo(0,-290);
+					context.rotate(6/180*Math.PI);
+					context.strokeStyle="purple";
+					context.lineWidth = 3;
+					context.stroke();
+					context.closePath();
+				}
+				
+				for(var i=1;i<=12;i++){
+					context.beginPath();
+					context.lineTo(0,-300);
+					context.lineTo(0,-270);
+					context.rotate(30/180*Math.PI);
+					context.strokeStyle="black";
+					context.lineWidth = 3;
+					context.stroke();
+					context.closePath();
+				}
+				
+				for(var i=1;i<=12;i++){
+					context.beginPath();
+					var rad = 2 * Math.PI/12*(i-3);
+	    			var x = Math.cos(rad) * (275 - 30);
+	    			var y = Math.sin(rad) * (275 - 30);
+					context.fillText(i,x,y);
+					context.closePath();
+				}
+				
+				var time = new Date();
+				var hou = time.getHours();
+				var min  = time.getMinutes();
+				var sec = time.getSeconds();
+				hou = hou > 12 ? hou - 12 : hou;
+	    		var hour = hou + min / 60;
+	    		var minute = min + sec / 60;
+	    		
+				context.beginPath();
+				context.save();
+				var ri = hour * 30 * Math.PI / 180;
+				context.rotate(ri);
+				context.moveTo(0,10);
+				context.lineTo(0,-140);
+				context.strokeStyle = "pink";
+				context.lineWidth = 7;
+				context.stroke();
+				context.restore();
+				context.closePath();
+				
+				context.beginPath();
+				context.save();
+				context.rotate(min * 6 * Math.PI / 180);				
+				context.moveTo(0,10);
+				context.lineTo(0,-205);
+				context.strokeStyle = "yellow";
+				context.lineWidth = 4;
+				context.stroke();
+				context.restore();
+				context.closePath();
+				
+				
+				context.beginPath();
+				context.save();
+				context.rotate(sec * 6 * Math.PI / 180);
+				context.moveTo(0,-10);
+				context.lineTo(0,270);
+				context.strokeStyle = "cornflowerblue";
+				context.lineWidth = 2;
+				context.stroke();
+				context.restore();
+				context.closePath();
+				
+				context.restore();
+			}
+		
+		</script>
+	</body>
+</html>
